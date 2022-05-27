@@ -10,7 +10,7 @@ const app = express()
 
 const server = http.createServer(app)
 
-const port = process.env.PORT
+const port = 5000
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -24,6 +24,6 @@ const io = new Server(server, {
     }
 })
 
-server.listen(5000, () => {
+server.listen(port, () => {
     console.log("SERVER IS UP ON PORT", port)
 })
