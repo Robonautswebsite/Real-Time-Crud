@@ -4,6 +4,8 @@ const { Server } = require('socket.io')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
+require('./db/mongoose.js')
+
 const app = express()
 
 const server = http.createServer(app)
