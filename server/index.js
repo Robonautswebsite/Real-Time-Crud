@@ -4,7 +4,6 @@ const { Server } = require('socket.io')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const Record = require('./db/models/Record')
-const { Socket } = require('dgram')
 
 require('./db/mongoose.js')
 
@@ -51,6 +50,22 @@ io.on("connection", (socket) => {
             }).catch((err) => {
                 console.log(err)
             });
+        emitRecord()
+    })
+
+    socket.on('updateRecord', async (data) => {
+        await Record.findOneAndUpdate(
+            { _id: data.recordId },
+            {
+                empId: data.empId,
+                empName: data.empName,
+                empPos: data.empPos
+            }
+        ).then((result) => {
+            console.log(result)
+        }).catch((err) => {
+            console.log(err)
+        });
         emitRecord()
     })
 })

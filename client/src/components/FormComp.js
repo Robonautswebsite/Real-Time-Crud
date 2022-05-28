@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import '../App.css';
 import io from 'socket.io-client'
@@ -20,10 +20,6 @@ const FormComp = () => {
 
     const formSubmit = (e) => {
         e.preventDefault()
-        console.log(empId)
-        console.log(empName)
-        console.log(empPos)
-
         saveNote()
 
         setEmpId("")

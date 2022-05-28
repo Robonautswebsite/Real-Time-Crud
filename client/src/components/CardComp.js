@@ -1,9 +1,21 @@
-import React from 'react'
-import { Card, Button, Icon } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { Form, Card, Button, Icon } from 'semantic-ui-react'
 import io from 'socket.io-client'
 const socket = io.connect("http://localhost:5000")
 
 const CardComp = ({ recordId, name, id, pos }) => {
+
+    const [isEditable, setIsEditable] = useState(false);
+
+    const [empId, setEmpId] = useState("");
+    const [empName, setEmpName] = useState("");
+    const [empPos, setEmpPos] = useState("");
+
+    const toggleEditForm = () => {
+        isEditable === false ?
+            setIsEditable(true) :
+            setIsEditable(false)
+    }
 
     const deleteRecord = () => {
         socket.emit('deleteRecord', {
@@ -11,6 +23,28 @@ const CardComp = ({ recordId, name, id, pos }) => {
         })
         console.log("delete", recordId)
     }
+
+    const updateRecord = () => {
+
+        socket.emit('updateRecord', {
+            recordId,
+            empId,
+            empName,
+            empPos
+        })
+        console.log("update", recordId)
+    }
+
+    const formSubmit = (e) => {
+        e.preventDefault()
+        updateRecord()
+
+        setEmpId("")
+        setEmpName("")
+        setEmpPos("")
+    }
+
+
     return (
         <div>
             <Card.Group>
@@ -24,7 +58,7 @@ const CardComp = ({ recordId, name, id, pos }) => {
                     </Card.Content>
                     <Card.Content extra>
                         <div>
-                            <Button icon labelPosition='left' floated='left' color='orange'>
+                            <Button onClick={toggleEditForm} icon labelPosition='left' floated='left' color='orange'>
                                 <Icon name='edit' />
                                 Edit
                             </Button>
@@ -36,6 +70,23 @@ const CardComp = ({ recordId, name, id, pos }) => {
                     </Card.Content>
                 </Card>
             </Card.Group>
+            {isEditable === true ?
+                <div className='edit-form-container'>
+                    <p className='edit-form-head'>Edit Record<Icon onClick={toggleEditForm} name='close' /></p>
+                    <Form onSubmit={formSubmit} size='tiny'>
+                        <Form.Group>
+                            <Form.Input value={empName} onChange={(e) => { setEmpName(e.target.value) }} label='Name' placeholder='Employee Name' width={16} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Input value={empId} onChange={(e) => { setEmpId(e.target.value) }} label='Employee ID' placeholder='Employee ID' width={6} />
+                            <Form.Input value={empPos} onChange={(e) => { setEmpPos(e.target.value) }} label='Position' placeholder='Position' width={6} />
+                        </Form.Group>
+                        <Form.Field control={Button}>Submit</Form.Field>
+                    </Form>
+                </div>
+                :
+                <div></div>
+            }
         </div>
     )
 }

@@ -30,3 +30,28 @@ body{
   letter-spacing: 0.6px;
   font-weight: bold;
 }
+
+.edit-form-container {
+  width: 90%;
+  margin: auto;
+  padding: 15px 25px 20px 25px;
+  border-radius:0 0 10px 10px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  margin-bottom: 30px;
+}
+
+
+.edit-form-head {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  font-weight: bold;
+}
+
+.edit-form-head i{
+  position: absolute;
+  right: 180px;
+  color: red;
+  cursor: pointer;
+}
