@@ -28,7 +28,7 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
     const emitRecord = async () => {
-        const records = await Record.find().select({ "empName": 1, "empId": 1, "empPos": 1, "_id": 0 })
+        const records = await Record.find().select({ "empName": 1, "empId": 1, "empPos": 1 })
         io.emit('loadRecord', records)
     }
     emitRecord()
@@ -41,6 +41,17 @@ io.on("connection", (socket) => {
         } catch (error) {
             console.log(error)
         }
+        emitRecord()
+    })
+
+    socket.on('deleteRecord', async (data) => {
+        await Record.deleteOne({ _id: data.recordId })
+            .then((result) => {
+                console.log(result)
+            }).catch((err) => {
+                console.log(err)
+            });
+        emitRecord()
     })
 })
 

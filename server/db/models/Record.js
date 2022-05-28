@@ -9,7 +9,8 @@ const recordSchema = new mongoose.Schema({
     empId: {
         type: Number,
         trim: true,
-        required: true
+        required: true,
+        unique: true,
     },
     empPos: {
         type: String,

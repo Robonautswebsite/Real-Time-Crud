@@ -25,7 +25,7 @@ function App() {
         {
           records.map((record) => {
             return (
-              <CardComp key={record.empId} name={record.empName} id={record.empId} pos={record.empPos} />
+              <CardComp key={record._id} recordId={record._id} name={record.empName} id={record.empId} pos={record.empPos} />
             )
           })
         }

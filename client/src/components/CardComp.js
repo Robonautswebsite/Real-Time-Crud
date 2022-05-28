@@ -1,7 +1,16 @@
 import React from 'react'
 import { Card, Button, Icon } from 'semantic-ui-react'
+import io from 'socket.io-client'
+const socket = io.connect("http://localhost:5000")
 
-const CardComp = ({ name, id, pos }) => {
+const CardComp = ({ recordId, name, id, pos }) => {
+
+    const deleteRecord = () => {
+        socket.emit('deleteRecord', {
+            recordId
+        })
+        console.log("delete", recordId)
+    }
     return (
         <div>
             <Card.Group>
@@ -19,7 +28,7 @@ const CardComp = ({ name, id, pos }) => {
                                 <Icon name='edit' />
                                 Edit
                             </Button>
-                            <Button icon labelPosition='left' floated='right' color='red'>
+                            <Button onClick={deleteRecord} icon labelPosition='left' floated='right' color='red'>
                                 <Icon name='delete' />
                                 Delete
                             </Button>
