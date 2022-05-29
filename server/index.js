@@ -4,10 +4,12 @@ const { Server } = require('socket.io')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const Record = require('./db/models/Record')
+const SocketIOFile = require('socket.io-file');
 
 require('./db/mongoose.js')
 
 const app = express()
+
 
 const server = http.createServer(app)
 
@@ -24,6 +26,7 @@ const io = new Server(server, {
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     }
 })
+
 
 io.on("connection", (socket) => {
     const emitRecord = async () => {
@@ -68,6 +71,26 @@ io.on("connection", (socket) => {
         });
         emitRecord()
     })
+
+    // Image upload
+    var count = 0;
+    var uploader = new SocketIOFile(socket, {
+        uploadDir: 'uploads',
+        chunkSize: 10240,
+        transmissionDelay: 0,
+        overwrite: false,
+        rename: function (filename) {
+            var split = filename.split('.');
+            var fname = split[0];
+            var ext = split[1];
+
+            return `${fname}_${count++}.${ext}`;
+        }
+    });
+    uploader.on('complete', (fileInfo) => {
+        console.log('Upload Complete.');
+        console.log(fileInfo);
+    });
 })
 
 

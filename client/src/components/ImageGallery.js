@@ -1,6 +1,8 @@
 import React from 'react'
 import { Header, Image } from 'semantic-ui-react'
 import ImageForm from './ImageForm'
+import io from 'socket.io-client'
+const socket = io.connect("http://localhost:5000")
 
 const ImageGallery = () => {
 
@@ -44,7 +46,6 @@ const ImageGallery = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
