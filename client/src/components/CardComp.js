@@ -48,7 +48,7 @@ const CardComp = ({ recordId, name, id, pos }) => {
     return (
         <div>
             <Card.Group>
-                <Card fluid color='red'>
+                <Card fluid color='brown'>
                     <Card.Content>
                         <Card.Header>{name}</Card.Header>
                         <Card.Meta>{id}</Card.Meta>
@@ -58,7 +58,7 @@ const CardComp = ({ recordId, name, id, pos }) => {
                     </Card.Content>
                     <Card.Content extra>
                         <div>
-                            <Button onClick={toggleEditForm} icon labelPosition='left' floated='left' color='orange'>
+                            <Button onClick={toggleEditForm} icon labelPosition='left' floated='left' color='blue'>
                                 <Icon name='edit' />
                                 Edit
                             </Button>

@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 body{
-  background-color: #feeafa !important;
+  background-color: #fcfcfc !important;
 }
 .App{
   display: flex;
@@ -54,4 +54,34 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   right: 180px;
   color: red;
   cursor: pointer;
+}
+
+.gallery{
+  margin: 100px ; 
+}
+
+.image-group{
+  display: flex;
+  max-width: 600px !important;
+  flex-wrap: wrap;
+  margin-left: 200px;
+}
+
+.image-container{
+  margin: 4px 14px ;
+}
+
+.gallery-container{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 100px 0px 100px 50px;
+}
+
+.image-title{
+  text-align: center;
+  margin-top: 4px;
+  font-size: 16px;
+  word-wrap: break-word;
+  max-width: 150px;
 }
