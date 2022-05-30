@@ -4,7 +4,7 @@ import CardComp from './components/CardComp';
 import FormComp from './components/FormComp';
 import io from 'socket.io-client'
 import ImageGallery from './components/ImageGallery';
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://realtime-crud.herokuapp.com/")
 
 function App() {
 

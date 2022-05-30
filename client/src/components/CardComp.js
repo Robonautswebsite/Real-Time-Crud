@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Card, Button, Icon } from 'semantic-ui-react'
 import io from 'socket.io-client'
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://realtime-crud.herokuapp.com/")
 
 const CardComp = ({ recordId, name, id, pos }) => {
 
