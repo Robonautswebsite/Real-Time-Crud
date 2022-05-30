@@ -25,7 +25,7 @@ app.use(router)
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://realtime-crud.netlify.app",
         methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     }
 })
