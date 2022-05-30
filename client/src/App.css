@@ -23,6 +23,7 @@ body{
   border-radius: 28px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   background-color: white;
+  margin-bottom: 100px;
 }
 .form-head{
   text-align: center;
@@ -60,28 +61,9 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 100px ; 
 }
 
-.image-group{
-  display: flex;
-  max-width: 600px !important;
-  flex-wrap: wrap;
-  margin-left: 200px;
-}
-
-.image-container{
-  margin: 4px 14px ;
-}
-
 .gallery-container{
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin: 100px 0px 100px 50px;
-}
-
-.image-title{
-  text-align: center;
-  margin-top: 4px;
-  font-size: 16px;
-  word-wrap: break-word;
-  max-width: 150px;
+  align-items: center;
+  justify-content: center;
+  margin: 100px 0;
 }

@@ -1,12 +1,8 @@
 import React from 'react'
-import { Header, Image } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import ImageForm from './ImageForm'
-import io from 'socket.io-client'
-const socket = io.connect("http://localhost:5000")
 
 const ImageGallery = () => {
-
-    const src = 'https://react.semantic-ui.com/images/wireframe/image.png'
 
     return (
         <div className='gallery'>
@@ -15,36 +11,6 @@ const ImageGallery = () => {
             </Header>
             <div className='gallery-container'>
                 <ImageForm />
-                <div className='image-group'>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                    <div className='image-container'>
-                        <Image src={src} size='small' />
-                        <p className='image-title'>Title</p>
-                    </div>
-                </div>
             </div>
         </div>
     )
