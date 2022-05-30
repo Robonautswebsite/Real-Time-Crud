@@ -1,3 +1,3 @@
-### Real-Time CRUD app using Socket.io
+## Real-Time CRUD app using Socket.io
 
-## Live Link : https://realtime-crud.netlify.app/
+### Live Link : https://realtime-crud.netlify.app/
