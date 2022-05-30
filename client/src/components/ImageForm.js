@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { Form, Button } from 'semantic-ui-react'
 import '../App.css';
 import io from 'socket.io-client'
@@ -12,10 +12,18 @@ const ImageForm = () => {
 
     var uploader = new SocketIOFileClient(socket);
 
+
+    useEffect(() => {
+        socket.on('showAlert', (data) => {
+            alert(data)
+        })
+        // eslint-disable-next-line
+    }, [socket])
+
     uploader.on('complete', function (fileInfo) {
         console.log('Upload Complete', fileInfo);
-        alert(`File named: ${fileInfo.name}\nUPLOADED SUCCESSFULLY\n at location: ${fileInfo.uploadDir}`)
     })
+
     const formSubmit = (e) => {
         e.preventDefault()
         var uploadIds = uploader.upload(inputImg.current);
